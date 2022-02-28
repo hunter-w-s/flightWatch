@@ -149,7 +149,7 @@ currentFlights = []
 tempFlightList = []
 reseter = 30
 
-planePictureList = [["DC10","kc10.jpg"],["K35R","kc135.jpg"],["C17","c17.jpg"],["CL60","cl60.jpg"],["Q4","q4.jpg"],["A332","a332.jpg"]]
+planePictureList = [["DC10","kc10.jpg"],["K35R","kc135.jpg"],["C17","c17.jpg"],["CL60","cl60.jpg"],["Q4","q4.jpg"],["A332","a332.jpg"],["R135","r135.jpg"]]
 
 def updateAirbornes(currentList):
     existsInList = False
@@ -191,7 +191,7 @@ while True:
             break
         except Exception as e:
             print(e)
-            time.sleep(10)
+            time.sleep(60)
     
     for each in flights:
         try:

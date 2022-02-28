@@ -181,7 +181,7 @@ class NestEscape(Exception): pass
 
 
 callsignList = ["FORTE","LAGR","KAYAK","NCHO","HOLD","JAKE","HOMER","PYTHON56","RCH","CNV","086205","095713","VIPER41","NATO","COBRA","REDEYE6","SVF622","RSD","RA","RFF6118","RF82040","RF82013"
-                "RF82013","CTA","KK","RRR","RFR","CTM","GAF","CL60","DUKE","BRK","PLF","RMAF","TUAF","IAM","MMF","SPTYT","CFC","HAF"]
+                "RF82013","CTA","KK","RRR","RFR","CTM","GAF","CL60","DUKE","BRK","PLF","RMAF","TUAF","IAM","MMF","SPTYT","CFC","HAF","JUMP"]
 
 
 while True:

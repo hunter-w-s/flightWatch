@@ -79,7 +79,7 @@ while True:
                           
         if (flightAlt >= 2000 and float(flightLat) <= upperLat and float(flightLat) >= lowerLat and float(flightLong) <= upperLong and float(flightLong) >= lowerLong):
             currentFlights.append([flightInfo["reg"],flightInfo["type"],flightInfo["cou"],flightInfo["opicao"],
-                                   "Aircraft Detected",flightInfo["call"],flightLat,flightLong])
+                                   "Aircraft Detected",flightInfo["call"],flightLat,flightLong,flightInfo["icao"]])
             
 
     for each in currentFlights:            
@@ -92,25 +92,21 @@ while True:
     
     tempRegList = []
     for each in currentFlights:
-        tempRegList.append([each[0],each[5]])
-        
+        tempRegList.append(each[8])
 
     tempFlightList = []
     newFlight = True
     for each in currentFlights:
         for live in airbornes.airborneFlights:
-            if each[5] == live[1] and each[0] == live[0]:
+            if each[8] == live[0]:
                 newFlight = False
                 break
         if newFlight:
             tempFlightList.append(each)
         newFlight = True
-        
-    #print(tempFlightList)
 
     airbornes.updateAirbornes(tempRegList)
-
-    oldFlights = currentFlights
+    
     currentFlights = []
 
     # datetime object containing current date and time
@@ -118,7 +114,6 @@ while True:
 
     # dd/mm/YY H:M:S
     dt_string = now.strftime("%d/%m/%Y %H:%M")
-    print("date and time =", dt_string)
 
 
     if len(tempFlightList) != 0:

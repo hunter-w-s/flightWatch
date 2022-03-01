@@ -54,7 +54,7 @@ while True:
             break
         except Exception as e:
             print(e)
-            time.sleep(360)
+            time.sleep(420)
     response = json.loads(response.text)
     for each in response["ac"]:
         
@@ -125,9 +125,6 @@ while True:
                 if firstLoop == True:
                     continue
                 for pictures in planePictureList:
-                    print(each[1] == pictures[0])
-                    print(each[1])
-                    print(pictures[0])
                     if each[1] == pictures[0]:
                         print("Picture Located")
                         
@@ -140,9 +137,10 @@ while True:
                 print(e)
             #print(tweetMessage)
 
-    tempFlightList = []    
+    tempFlightList = []
+    print(airbornes.airborneFlights)
     airbornes.cleanAirbornes()
     print(airbornes.airborneFlights)
     print("\n")
     firstLoop = False
-    time.sleep(360)
+    time.sleep(420)

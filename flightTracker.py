@@ -120,30 +120,44 @@ while True:
     dt_string = now.strftime("%d/%m/%Y %H:%M")
     print("date and time =", dt_string)
 
-    
-    aircraftPictureLocated = False
+
     if len(tempFlightList) != 0:
-        for each in tempFlightList:            
-            try:
-                tweetMessage = "Time: {} EST\n{}\nAircraft ID: {}\nCallsign: {}\nOwner: {}\nCountry: {}\nLat: {}\nLon: {}\n\n#Aviation #AirForce #Europe".format(dt_string,each[4],each[1],each[5],each[3],each[2],each[6][:5],each[7][:5])
-                #print(tweetMessage)
-                #print(len(tweetMessage))
-                #print("\n")
-                if firstLoop == True:
-                    continue
-                for pictures in planePictureList:
-                    if each[1] == pictures[0]:
+        if firstLoop == True:
+            continue
+        postMediaIDs = []
+        postText = []
+        infoCounter = 0
+        for x in range(len(tempFlightList)):
+            
+            postText.append("Aircraft: {}\nCallsign: {}\nLat: {}\nLon: {}\n\n".format(tempFlightList[x][1],tempFlightList[x][5],tempFlightList[x][6][:4],tempFlightList[x][7][:4]))
+            for pictures in planePictureList:
+                    if tempFlightList[x][1] == pictures[0]:
                         #print("Picture Located")
-                        api.update_status_with_media(status = tweetMessage, filename = pictures[1])
+                        res = api.media_upload(pictures[1])
+                        postMediaIDs.append(res.media_id)
                         aircraftPictureLocated = True
                         break
-                if aircraftPictureLocated == False:
-                    print("Picture Missing: {} : {}".format(each[1],each[0]))
+                    
+            infoCounter += 1
+            if infoCounter == 4 or x+1 == len(tempFlightList):
+                tweetMessage = "Time: {} EST\n\n".format(dt_string)
+                for each in postText:
+                    tweetMessage += each
+
+                tweetMessage += "#Aviation #Europe"
+                print(tweetMessage)
+                print(len(tweetMessage))
+
+                infoCounter = 0
+
+                if len(postMediaIDs) > 0:
+                    api.update_status(status = tweetMessage, media_ids = postMediaIDs)
+                else:
                     api.update_status(status = tweetMessage)
-            except Exception as e:
-                print(e)
-            aircraftPictureLocated = False
-            #print(tweetMessage)
+
+                postMediaIDs = []
+                postText = []
+
 
     tempFlightList = []
     

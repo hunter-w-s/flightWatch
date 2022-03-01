@@ -3,7 +3,7 @@ lowerLat = 35
 upperLong = 40
 lowerLong = -15
 firstLoop = True
-reseter = 9
+reseter = 7
 
 
 

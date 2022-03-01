@@ -61,24 +61,31 @@ while True:
         flightInfo = each
         flightLat = (flightInfo["lat"])
         flightLong = (flightInfo["lon"])
+        flightAlt = (flightInfo["alt"])
 
         if flightLat == "" or flightLong == "":
             continue
+
+        if flightInfo["reg"] == "" and flightInfo["call"] == "" or flightInfo["type"] == "" or flightInfo["type"] == "TEST":
+            continue
+
+        if "GROUND" in flightAlt.upper() or flightAlt == "":
+            continue
+
+        try:
+            flightAlt = int(flightAlt)
+        except:
+            continue
                           
-        if (float(flightLat) <= upperLat and float(flightLat) >= lowerLat and float(flightLong) <= upperLong and float(flightLong) >= lowerLong):
+        if (flightAlt >= 2000 and float(flightLat) <= upperLat and float(flightLat) >= lowerLat and float(flightLong) <= upperLong and float(flightLong) >= lowerLong):
             currentFlights.append([flightInfo["reg"],flightInfo["type"],flightInfo["cou"],flightInfo["opicao"],
                                    "Aircraft Detected",flightInfo["call"],flightLat,flightLong])
             
 
-    for each in currentFlights:
-        if each[0] == "" and each[5] == "":
-            currentFlights.remove(each)
-            
+    for each in currentFlights:            
         for x in range(len(each)):
             if len(each[x]) == 0:
                 each[x] = "N/A"
-
-                
 
 
     
@@ -99,7 +106,7 @@ while True:
             tempFlightList.append(each)
         newFlight = True
         
-    print(tempFlightList)
+    #print(tempFlightList)
 
     airbornes.updateAirbornes(tempRegList)
 
@@ -119,27 +126,29 @@ while True:
         for each in tempFlightList:            
             try:
                 tweetMessage = "Time: {} EST\n{}\nAircraft ID: {}\nCallsign: {}\nOwner: {}\nCountry: {}\nLat: {}\nLon: {}\n\n#Aviation #AirForce #Europe".format(dt_string,each[4],each[1],each[5],each[3],each[2],each[6][:5],each[7][:5])
-                print(tweetMessage)
-                print(len(tweetMessage))
-                print("\n")
+                #print(tweetMessage)
+                #print(len(tweetMessage))
+                #print("\n")
                 if firstLoop == True:
                     continue
                 for pictures in planePictureList:
                     if each[1] == pictures[0]:
-                        print("Picture Located")
-                        
+                        #print("Picture Located")
                         api.update_status_with_media(status = tweetMessage, filename = pictures[1])
                         aircraftPictureLocated = True
                         break
                 if aircraftPictureLocated == False:
+                    print("Picture Missing: {} : {}".format(each[1],each[0]))
                     api.update_status(status = tweetMessage)
             except Exception as e:
                 print(e)
+            aircraftPictureLocated = False
             #print(tweetMessage)
 
     tempFlightList = []
-    print(airbornes.airborneFlights)
+    
     airbornes.cleanAirbornes()
+    print(len(airbornes.airborneFlights))
     print(airbornes.airborneFlights)
     print("\n")
     firstLoop = False

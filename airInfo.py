@@ -1,11 +1,13 @@
-planePictureListing = [["H47","h47.jpg"],
-                       ["TBM7","tbm7.jpg"],["C5M","c5.jpg"],
-                       ["DC10","kc10.jpg"],["LJ35","lj35.jpg"],
-                       ["A359","a359.jpg"],["EC3F","ec3f.jpg"],["F35","f35.jpg"],
-                       ["F15","f15.jpg"],["F16","f16.jpg"],["F22","f22.jpg"],
-                       ["VF35","f35.jpg"],["B52","b52.jpg"],["PC12","pc12.jpg"],
-                       ["E3TF","e3tf.jpg"],["A10","a10.jpg"],["E6","e6.jpg"],["P8","p8.jpg"],
-                       ["C30J","c30j.jpg"],["C17","c17.jpg"],["CL60","cl60.jpg"],["Q4","q4.jpg"],
+planePictureListing = [["H47","h47.jpg"],["A400","a400.jpg"],["BE20","be20.jpg"],["A109","a109.jpg"],["AJET","ajet.jpg"],
+                       ["K35R","k35r.jpg"],["C130","c30j.jpg"],["PC21","pc21.jpg"],["M28","m28.jpg"],["GLF4","glf4.jpg"],
+                       ["TBM7","tbm7.jpg"],["C5M","c5.jpg"],["E3CF","e3cf.jpg"],["EC35","ec35.jpg"],["D228","d228.jpg"],
+                       ["DC10","kc10.jpg"],["LJ35","lj35.jpg"],["LYNX","lynx.jpg"],["SR22","sr22.jpg"],["CN35","cn35.jpg"],
+                       ["A359","a359.jpg"],["EC3F","ec3f.jpg"],["F35","f35.jpg"],["PUMA","puma.jpg"],["P180","p180.jpg"],
+                       ["F15","f15.jpg"],["F16","f16.jpg"],["F22","f22.jpg"],["B350","b350.jpg"],["AS32","as32.jpg"],
+                       ["VF35","f35.jpg"],["B52","b52.jpg"],["PC12","pc12.jpg"],["HAWK","hawk.jpg"],["C295","c295.jpg"],
+                       ["E3TF","e3tf.jpg"],["A10","a10.jpg"],["E6","e6.jpg"],["P8","p8.jpg"],["MI24","MI24.jpg"],
+                       ["C30J","c30j.jpg"],["C17","c17.jpg"],["CL60","cl60.jpg"],["Q4","q4.jpg"],["G12T","g12t.jpg"],
+                       ["EH10","eh10.jpg"],["F260","f260.jpg"],["TEX2","tex2.jpg"],["MIR2","mir2.jpg"],
                        ["A332","a332.jpg"],["R135","r135.jpg"],["H60","uh60.jpg"],["B737","737.jpg"],["EUFI","eufi.jpg"]]
 
 callsignPrefix = ["FORTE","LAGR","KAYAK","NCHO","HOLD","JAKE","HOMER","PYTHON56","RCH","CNV","086205","095713","VIPER41","NATO","COBRA","REDEYE6","SVF622","RSD","RA","RFF6118","RF82040","RF82013"

@@ -4,8 +4,8 @@ This is a twitter bot that posts updates whnever an aircraft is detected over a 
 Originally used by @JetWatch_Europe
 
 # Required Packages
-requests\n
-datetime\n
-tweepy\n
-time\n
+requests
+datetime
+tweepy
+time
 json

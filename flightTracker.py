@@ -1,3 +1,4 @@
+from FlightRadar24.api import FlightRadar24API
 import time
 import tweepy
 from datetime import datetime
@@ -14,6 +15,9 @@ auth.set_access_token(apiKeys.tweepyAccessKey,
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 #api.update_status(status = "Hello Twitter")
+
+#Gets Flight Data
+fr_api = FlightRadar24API()
 
 url = "https://adsbexchange-com1.p.rapidapi.com/mil/"
 
@@ -115,6 +119,9 @@ while True:
     if len(tempFlightList) != 0:
         if firstLoop == True:
             continue
+
+        postPicsExist = []
+        postPictures = []
         postMediaIDs = []
         postText = []
         infoCounter = 0
@@ -124,10 +131,16 @@ while True:
             for pictures in planePictureList:
                     if tempFlightList[x][1] == pictures[0]:
                         #print("Picture Located")
-                        res = api.media_upload(pictures[1])
-                        postMediaIDs.append(res.media_id)
-                        aircraftPictureLocated = True
+                        postPicsExist.append(pictures[1])
                         break
+
+            for each in postPicsExist:
+                if each not in postPictures:
+                    postPictures.append(each)
+
+            for each in postPictures:
+                res = api.media_upload(each)
+                postMediaIDs.append(res.media_id)
                     
             infoCounter += 1
             if infoCounter == 4 or x+1 == len(tempFlightList):

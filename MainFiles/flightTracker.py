@@ -23,7 +23,7 @@ url = "https://adsbexchange-com1.p.rapidapi.com/mil/"
 
 headers = {
     'x-rapidapi-host': "adsbexchange-com1.p.rapidapi.com",
-    'x-rapidapi-key': "843a92fc7emsh0158a368f38b677p17d9d0jsnb0c2635d1406"
+    'x-rapidapi-key': config.rapidAPIKey
     }
 
 upperLat = float(config.upperLat)

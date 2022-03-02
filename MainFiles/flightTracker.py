@@ -1,3 +1,4 @@
+from FlightRadar24.api import FlightRadar24API
 import time
 import tweepy
 from datetime import datetime
@@ -13,12 +14,16 @@ auth.set_access_token(apiKeys.tweepyAccessKey,
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
+#api.update_status(status = "Hello Twitter")
+
+#Gets Flight Data
+fr_api = FlightRadar24API()
 
 url = "https://adsbexchange-com1.p.rapidapi.com/mil/"
 
 headers = {
     'x-rapidapi-host': "adsbexchange-com1.p.rapidapi.com",
-    'x-rapidapi-key': config.rapidAPIKey
+    'x-rapidapi-key': "843a92fc7emsh0158a368f38b677p17d9d0jsnb0c2635d1406"
     }
 
 upperLat = float(config.upperLat)

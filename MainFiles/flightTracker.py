@@ -13,10 +13,6 @@ auth.set_access_token(apiKeys.tweepyAccessKey,
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-#api.update_status(status = "Hello Twitter")
-
-#Gets Flight Data
-fr_api = FlightRadar24API()
 
 url = "https://adsbexchange-com1.p.rapidapi.com/mil/"
 
